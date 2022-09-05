@@ -15,7 +15,7 @@ jobs:
         uses: thatisuday/go-cross-build@v1
         with:
             platforms: 'windows/amd64'
-            package: 'GoBuildRepo'
+            package: 'demo'
             name: 'HelloWorld'
             compress: 'false'
             dest: 'GoBuildRepo/GoDestination'
