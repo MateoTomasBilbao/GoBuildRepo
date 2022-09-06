@@ -31,10 +31,10 @@ jobs:
       uses: PackagrIO/action-publishr-go@v1.0.1
       with:
     # Commit Author
-        author_name: MateoTomasBilbao # default is packagrio-bot
+        author_name: packagrio.bot # default is packagrio-bot
     # Commit Author Email
-        author_email: mateo.bilbao@endava.com # default is packagr-io[bot]@users.noreply.github.com
+        author_email: packagr-io[bot]@users.noreply.github.com # default is packagr-io[bot]@users.noreply.github.com
     # Assets to upload
         # upload_assets: # optional
     # Working Directory
-        cwd: './GoBuildRepo/'# optional, default is 
+        cwd: './GoBuildRepo/' # optional, default is 
