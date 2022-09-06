@@ -28,15 +28,9 @@ jobs:
     - name: Go Publishr
   # You may pin to the exact commit or the version.
   # uses: PackagrIO/action-publishr-go@5500e68ee3673e8e8f9b825b72c67198d97804f3
-      uses: PackagrIO/action-publishr-go@v1.0.1
+      uses: PackagrIO/action-publishr-go@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-    # Commit Author
-        author_name: packagrio.bot # default is packagrio-bot
-    # Commit Author Email
-        author_email: packagr-io[bot]@users.noreply.github.com # default is packagr-io[bot]@users.noreply.github.com
     # Assets to upload
         upload_assets: 'HelloWorld' # optional
-    # Working Directory
-       # cwd: './GoBuildRepo/' # optional, default is 
