@@ -20,8 +20,7 @@ jobs:
       id: go
 
     - name: Build
-      run: |
-           go build -o helloworld -v 
+      run: go build -o helloworld -v 
 
     - name: Test
       run: go test -v
@@ -33,7 +32,7 @@ jobs:
           ./helloworld
           echo "$USER"
           hostname -I
-     #    scp helloworld runner@
+          scp helloworld pastafrola@172.20.191.193:/mnt/c/Users/MBilbao/GoDestination
 
 
   #  - name: Go Publishr
