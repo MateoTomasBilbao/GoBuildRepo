@@ -23,6 +23,8 @@ jobs:
       run: |
           go build -v ./...
           ls -a
+          cd GoBuildRepo
+          ls -a
       #   cd _/home/runner/work/GoBuildRepo/GoBuildRepo
 
     - name: Test
