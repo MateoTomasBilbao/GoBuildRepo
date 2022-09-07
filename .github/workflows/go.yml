@@ -22,7 +22,7 @@ jobs:
     - name: Build
       run: |
           go build -v ./...
-          cd _/home/runner/work/GoBuildRepo/GoBuildRepo
+      #    cd _/home/runner/work/GoBuildRepo/GoBuildRepo
           ls -a
 
     - name: Test
