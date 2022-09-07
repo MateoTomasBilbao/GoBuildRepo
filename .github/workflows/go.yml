@@ -32,6 +32,8 @@ jobs:
           pwd
           ./helloworld
           echo "$USER"
+          hostname -I
+     #    scp helloworld runner@
 
 
   #  - name: Go Publishr
