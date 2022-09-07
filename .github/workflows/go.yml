@@ -29,6 +29,10 @@ jobs:
       run: |
           ls -a
           pwd
+          cd /home/runner/work/GoBuildRepo/GoBuildRepo/GoBuildRepo/
+          ls -a
+          pwd
+
 
   #  - name: Go Publishr
   # You may pin to the exact commit or the version.
