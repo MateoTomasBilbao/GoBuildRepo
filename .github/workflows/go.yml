@@ -32,7 +32,8 @@ jobs:
           ./helloworld
           echo "$USER"
           hostname -I
-          scp helloworld pastafrola@172.20.191.193:/mnt/c/Users/MBilbao/GoDestination
+          ping -c 4 172.20.191.193
+#          scp helloworld pastafrola@172.20.191.193:/mnt/c/Users/MBilbao/GoDestination
 
 
   #  - name: Go Publishr
