@@ -27,10 +27,7 @@ jobs:
       
     - name: Check
       run: |
-          ls -a
-          pwd
-          cd /home/runner/work/GoBuildRepo/GoBuildRepo/GoBuildRepo/
-          ls -a
+          ls -la
           pwd
 
 
