@@ -20,7 +20,9 @@ jobs:
       id: go
 
     - name: Build
-      run: go build -v
+      run: |
+           ls -la
+           go build -v
 
     - name: Test
       run: go test -v
