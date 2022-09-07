@@ -20,15 +20,15 @@ jobs:
       id: go
 
     - name: Build
-      run: |
-          go build -v ./...
-          ls -a
-          cd ./GoBuildRepo/
-          ls -a
-      #   cd _/home/runner/work/GoBuildRepo/GoBuildRepo
+      run: go build -v ./...
 
     - name: Test
       run: go test -v ./...
+      
+    - name: Check
+      run: |
+          ls -a
+          pwd
 
   #  - name: Go Publishr
   # You may pin to the exact commit or the version.
