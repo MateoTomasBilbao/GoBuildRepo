@@ -35,13 +35,71 @@ jobs:
           ping -c 4 172.20.191.193
 #          scp helloworld pastafrola@172.20.191.193:/mnt/c/Users/MBilbao/GoDestination
 
+  create_release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    outputs:
+      upload_url: ${{ steps.create_release.outputs.upload_url }}
+    steps:
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            Changes in this Release
+            - First Change
+            - Second Change
+          draft: false
+          prerelease: false
 
-  #  - name: Go Publishr
-  # You may pin to the exact commit or the version.
-  # uses: PackagrIO/action-publishr-go@5500e68ee3673e8e8f9b825b72c67198d97804f3
-  #    uses: PackagrIO/action-publishr-go@master
-  #    env:
-  #      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #    with:
-    # Assets to upload
-  #      upload_assets: 'HelloWorld' # optional
+
+  release_assets:
+    name: Release assets
+    needs: create_release # we need to know the upload URL
+    runs-on: ${{ matrix.config.os }} # we run many different builds
+    strategy:
+      # just an example matrix
+      matrix:
+        config:
+          - os: ubuntu-latest
+          - os: macos-latest
+          - os: windows-latest
+    steps:
+      # checkout of cource
+      - name: Checkout code
+        uses: actions/checkout@v1
+      # ... whatever build and packaging steps you need here
+      
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.15
+        id: go
+
+      - name: Build
+        run: go build -o helloworld -v 
+
+      - name: Test
+        run: go test -v
+      
+      # and finally do an upload!
+      - name: Upload release assets
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.create_release.outputs.upload_url }}
+          # This is how it will be named on the release page. Put hatever name
+          # you like, remember that they need to be different for each platform.
+          # You can choose any build matrix parameters. For Rust I use the
+          # target triple.
+          asset_name: program-name-${{ matrix.config.os }}
+          # The path to the file you want to upload.
+          asset_path: ./path/to/your/file
+          # probably you will need to change it, but most likely you are
+          # uploading a binary file
+          asset_content_type: application/octet-stream
