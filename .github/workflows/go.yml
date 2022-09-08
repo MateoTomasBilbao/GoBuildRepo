@@ -19,7 +19,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          tag_name: 'tag3'
+          tag_name: 'tag4'
           release_name: 'Hello World'
           body: |
             Changes in this Release
@@ -66,9 +66,9 @@ jobs:
           # you like, remember that they need to be different for each platform.
           # You can choose any build matrix parameters. For Rust I use the
           # target triple.
-          asset_name: program-name-${{ matrix.config.os }}
+          asset_name: HelloWorld
           # The path to the file you want to upload.
-          asset_path: ./home/runner/work/GoBuildRepo/GoBuildRepo
+          asset_path: /home/runner/work/GoBuildRepo/GoBuildRepo
           # probably you will need to change it, but most likely you are
           # uploading a binary file
           asset_content_type: application/octet-stream
