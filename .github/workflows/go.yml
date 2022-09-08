@@ -7,34 +7,6 @@ on:
     branches: [ "main" ]
 
 jobs:
-
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: Set up Go
-      uses: actions/setup-go@v2
-      with:
-        go-version: 1.15
-      id: go
-
-    - name: Build
-      run: go build -o helloworld -v 
-
-    - name: Test
-      run: go test -v
-      
-    - name: Check
-      run: |
-          ls -la
-          pwd
-          ./helloworld
-          echo "$USER"
-          hostname -I
-          ping -c 4 172.20.191.193
-#          scp helloworld pastafrola@172.20.191.193:/mnt/c/Users/MBilbao/GoDestination
-
   create_release:
     name: Create Release
     runs-on: ubuntu-latest
@@ -55,7 +27,6 @@ jobs:
             - Second Change
           draft: false
           prerelease: false
-
 
   release_assets:
     name: Release assets
