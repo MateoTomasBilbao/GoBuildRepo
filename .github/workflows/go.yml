@@ -16,6 +16,7 @@ jobs:
       - name: Get version
         id: get_version
         run: |
+          ls -la
           touch version.txt
           echo "1.0.0" > version.txt
           MAJOR=$(cat version.txt | cut -d . -f 1)
@@ -23,6 +24,7 @@ jobs:
           PATCH=$(cat version.txt | cut -d . -f 3)
           VERSION="v${MAJOR}.${MINOR}.${PATCH}"
           echo "::set-output name=version::${VERSION}"
+          ls -la
           
       - name: Create Release
         id: create_release
