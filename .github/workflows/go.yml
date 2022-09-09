@@ -16,6 +16,8 @@ jobs:
       - name: Get version
         id: get_version
         run: |
+          touch version.txt
+          echo "1.0.0" > version.txt
           MAJOR=$(cat version.txt | cut -d . -f 1)
           MINOR=$(cat version.txt | cut -d . -f 2)
           PATCH=$(cat version.txt | cut -d . -f 3)
